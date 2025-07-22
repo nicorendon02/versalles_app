@@ -43,3 +43,15 @@ document.getElementById("formulario").addEventListener("submit", function (e) {
 });
 
 mostrarSeccion(seccionActual);
+
+
+
+document.getElementById("formulario").addEventListener("submit", function (e) {
+  document.querySelectorAll('.seccion').forEach(seccion => {
+    if (seccion.style.display === "none") {
+      seccion.querySelectorAll('input, select, textarea').forEach(input => {
+        input.removeAttribute("required");
+      });
+    }
+  });
+});

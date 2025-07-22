@@ -11,6 +11,7 @@ if (isset($_SESSION['usuario'])) {
   <meta charset="UTF-8">
   <title>Iniciar sesión - Versalles</title>
   <link rel="stylesheet" href="css/estilos.css">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <style>
     body {
       display: flex;
@@ -18,7 +19,8 @@ if (isset($_SESSION['usuario'])) {
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background: #f5f5f5;
+      background-image: url('assets/background.svg');
+      background-size: cover;
       font-family: 'Segoe UI', sans-serif;
     }
     .login-box {
@@ -32,6 +34,7 @@ if (isset($_SESSION['usuario'])) {
     }
     input {
       width: 100%;
+      box-sizing: border-box;
       padding: 0.8rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
@@ -52,10 +55,20 @@ if (isset($_SESSION['usuario'])) {
       font-size: 0.9rem;
       margin-bottom: 1rem;
     }
+    .logo {
+      max-width: 300px;
+      margin-bottom: 1rem;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
   </style>
 </head>
 <body>
   <div class="login-box">
+    <img src="assets/logo.svg" alt="Logo Versalles" class="logo">
     <h2>Panel administrador</h2>
     <?php if (isset($_GET['error'])): ?>
       <div class="error">Usuario o contraseña incorrectos.</div>
@@ -65,6 +78,11 @@ if (isset($_SESSION['usuario'])) {
       <input type="password" name="password" placeholder="Contraseña" required>
       <button type="submit">Iniciar sesión</button>
     </form>
+    <footer>
+      v1.0 <br>
+      &copy; 2025 Centro de Desarrollo Comunitario Versalles. Todos los derechos reservados. <br>
+      Desarrollado por Nicolas Rendon Arias.
+    </footer>
   </div>
 </body>
 </html>

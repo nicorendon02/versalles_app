@@ -15,6 +15,7 @@ $rol = $_SESSION['rol'];
   <meta charset="UTF-8">
   <title>Panel Administrador</title>
   <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
     body {
       display: flex;
