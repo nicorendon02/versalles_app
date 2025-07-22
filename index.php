@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <title>Nueva Aplicación - Versalles</title>
   <link rel="stylesheet" href="css/estilos.css">
+<!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f7f7f7;
+      /*background: #f7f7f7;*/
+      /* background image */
+        background-image: url('assets/background.svg');
       margin: 0;
       padding: 0;
       display: flex;
@@ -83,9 +87,9 @@
 <body>
   <div class="contenedor">
     <a class="admin-btn" href="login.php">
-      <span>👤</span> Panel administrador
+      Panel administrador
     </a>
-    <img src="img/logo-versalles.png" alt="Logo Versalles" class="logo">
+    <img src="assets/logo.svg" alt="Logo Versalles" class="logo">
     <div class="titulo">Nueva aplicación</div>
     <div class="descripcion">
       Bienvenido al Centro de Desarrollo Comunitario Versalles.<br>
