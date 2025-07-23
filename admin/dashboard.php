@@ -124,6 +124,8 @@ $rol = $_SESSION['rol'];
   <div class="sidebar">
     <div>
       <img src="../assets/logo-blanco.svg" alt="Logo" class="logo">
+      <h1>Hola, <?php echo $_SESSION['usuario']; ?></h1>
+      <br>
       <h2>Total de Aplicaciones</h2>
       <div class="total"><?php echo $total; ?></div>
     </div>
