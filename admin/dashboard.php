@@ -64,11 +64,16 @@ $rol = $_SESSION['rol'];
     .logout:hover {
       background-color: #1e2f70;
     }
+    .logo {
+      max-width: 240px;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
   <div class="sidebar">
     <div>
+      <img src="../assets/logo-blanco.svg" alt="Logo Versalles" class="logo">
       <h2>Hola, <?php echo strtoupper($rol); ?></h2>
       <div class="total"><?php echo $total; ?> Total aplicantes</div>
     </div>
