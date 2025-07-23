@@ -66,66 +66,165 @@ $rol = $_SESSION['rol'];
     }
     .logo {
       max-width: 240px;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .foto-aplicante {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+    .nombre-foto {
+      display: flex;
+      align-items: center;
+    }
+    .btn-ver {
+      background-color: #2d4491;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-editar {
+      background-color: #f0ad4e;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-eliminar {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
     <div>
-      <img src="../assets/logo-blanco.svg" alt="Logo Versalles" class="logo">
-      <h2>Hola, <?php echo strtoupper($rol); ?></h2>
-      <div class="total"><?php echo $total; ?> Total aplicantes</div>
+      <img src="../assets/logo-blanco.svg" alt="Logo" class="logo">
+      <h2>Total de Aplicaciones</h2>
+      <div class="total"><?php echo $total; ?></div>
     </div>
-    <a class="logout" href="logout.php">Cerrar sesión</a>
+    <a href="logout.php" class="logout">Cerrar sesión</a>
   </div>
   <div class="main">
-    <h1>Filtrar hojas de vida</h1>
-    <form class="filtros" method="GET" action="dashboard.php">
-      <input type="text" name="profesion" placeholder="Escriba profesión">
-      <label>
-        <input type="checkbox" name="icbf" value="1"> Trabajó con ICBF
-      </label>
-      <select name="tiempo_grado">
-        <option value="">Tiempo desde la última formación</option>
-        <option value="< 6 meses">&lt; 6 meses</option>
-        <option value="6-12 meses">6-12 meses</option>
-        <option value="> 1 año">&gt; 1 año</option>
-      </select>
-      <button type="submit">Filtrar</button>
-    </form>
-
-    <div class="resultados">
-      <?php
-      $condiciones = [];
-      if (!empty($_GET['profesion'])) {
-        $prof = $conexion->real_escape_string($_GET['profesion']);
-        $condiciones[] = "profesion LIKE '%$prof%'";
-      }
-      if (!empty($_GET['icbf'])) {
-        $condiciones[] = "trabaja_icbf = 1";
-      }
-      if (!empty($_GET['tiempo_grado'])) {
-        $tiempo = $conexion->real_escape_string($_GET['tiempo_grado']);
-        $condiciones[] = "tiempo_grado = '$tiempo'";
-      }
-      $where = count($condiciones) > 0 ? 'WHERE ' . implode(' AND ', $condiciones) : '';
-
-      $sql = "SELECT id, nombres, apellidos, profesion, celular FROM aplicaciones $where ORDER BY id DESC";
-      $res = $conexion->query($sql);
-      while ($row = $res->fetch_assoc()):
-      ?>
-        <div style="margin-bottom: 1rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
-          <strong><?php echo $row['nombres'] . ' ' . $row['apellidos']; ?></strong><br>
-          <?php echo $row['profesion']; ?> - Tel: <?php echo $row['celular']; ?><br>
-          <a href="ver.php?id=<?php echo $row['id']; ?>">Ver aplicación</a>
-          <?php if ($rol === 'superadmin'): ?>
-            | <a href="editar.php?id=<?php echo $row['id']; ?>">Editar</a>
-            | <a href="eliminar.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Confirma que desea eliminar esta hoja de vida?');">Eliminar</a>
-          <?php endif; ?>
-        </div>
-      <?php endwhile; ?>
+    <h1>Panel de Control</h1>
+    <div class="filtros">
+      <form method="GET">
+        <input type="text" name="buscar" placeholder="Buscar por nombre o cédula" value="<?php echo $_GET['buscar'] ?? ''; ?>">
+        <select name="ordenar">
+          <option value="reciente" <?php if ($_GET['ordenar'] ?? '' === 'reciente') echo 'selected'; ?>>Más reciente</option>
+          <option value="antiguo" <?php if ($_GET['ordenar'] ?? '' === 'antiguo') echo 'selected'; ?>>Más antiguo</option>
+        </select>
+        <input type="text" name="profesion" placeholder="Filtrar por profesión" value="<?php echo $_GET['profesion'] ?? ''; ?>">
+        <select name="icbf">
+          <option value="">¿Trabajó con ICBF?</option>
+          <option value="1" <?php if ($_GET['icbf'] ?? '' === '1') echo 'selected'; ?>>Sí</option>
+          <option value="0" <?php if ($_GET['icbf'] ?? '' === '0') echo 'selected'; ?>>No</option>
+        </select>
+        <select name="formacion_antiguedad">
+          <option value="">Última formación profesional</option>
+          <option value="1" <?php if ($_GET['formacion_antiguedad'] ?? '' === '1') echo 'selected'; ?>>Menos de 1 año</option>
+          <option value="3" <?php if ($_GET['formacion_antiguedad'] ?? '' === '3') echo 'selected'; ?>>Menos de 3 años</option>
+          <option value="5" <?php if ($_GET['formacion_antiguedad'] ?? '' === '5') echo 'selected'; ?>>Más de 5 años</option>
+        </select>
+        <button type="submit">Filtrar</button>
+      </form>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Aplicante</th>
+          <th>Profesión</th>
+          <th>Correo</th>
+          <th>Ciudad</th>
+          <th>ICBF</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $query = "SELECT a.id, a.nombres, a.apellidos, a.correo, a.ciudad, a.foto, a.profesion, a.trabaja_icbf, f.fecha_fin
+                  FROM aplicaciones a
+                  LEFT JOIN formacion_profesional f ON a.id = f.id_aplicacion
+                  WHERE 1=1";
+
+        if (!empty($_GET['buscar'])) {
+          $buscar = $conexion->real_escape_string($_GET['buscar']);
+          $query .= " AND (a.nombres LIKE '%$buscar%' OR a.apellidos LIKE '%$buscar%' OR a.cedula LIKE '%$buscar%')";
+        }
+        if (!empty($_GET['profesion'])) {
+          $profesion = $conexion->real_escape_string($_GET['profesion']);
+          $query .= " AND a.profesion LIKE '%$profesion%'";
+        }
+        if (isset($_GET['icbf']) && $_GET['icbf'] !== '') {
+          $icbf = $conexion->real_escape_string($_GET['icbf']);
+          $query .= " AND a.trabaja_icbf = '$icbf'";
+        }
+        if (!empty($_GET['formacion_antiguedad'])) {
+          $años = intval($_GET['formacion_antiguedad']);
+          if ($años == 5) {
+            $query .= " AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) > 5";
+          } else {
+            $query .= " AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) <= $años";
+          }
+        }
+        if (!empty($_GET['ordenar']) && $_GET['ordenar'] === 'antiguo') {
+          $query .= " ORDER BY a.id ASC";
+        } else {
+          $query .= " ORDER BY a.id DESC";
+        }
+
+        $resultado = $conexion->query($query);
+        if (!$resultado) {
+          die("Error en la consulta: " . $conexion->error);
+        }
+
+        while ($fila = $resultado->fetch_assoc()) {
+        ?>
+        <tr>
+          <td class="nombre-foto">
+            <img src="../uploads/<?php echo $fila['foto']; ?>" alt="Foto" class="foto-aplicante">
+            <?php echo $fila['nombres'] . ' ' . $fila['apellidos']; ?>
+          </td>
+          <td><?php echo $fila['profesion']; ?></td>
+          <td><?php echo $fila['correo']; ?></td>
+          <td><?php echo $fila['ciudad']; ?></td>
+          <td><?php echo $fila['trabaja_icbf'] ? 'Sí' : 'No'; ?></td>
+          <td>
+            <a href="ver.php?id=<?php echo $fila['id']; ?>" class="btn-ver">Ver</a>
+            <?php if ($rol === 'superadmin'): ?>
+              <a href="editar.php?id=<?php echo $fila['id']; ?>" class="btn-editar">Editar</a>
+              <a href="eliminar.php?id=<?php echo $fila['id']; ?>" class="btn-eliminar" onclick="return confirm('¿Estás seguro de eliminar esta aplicación?')">Eliminar</a>
+            <?php endif; ?>
+          </td>
+
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
   </div>
 </body>
 </html>
