@@ -133,11 +133,12 @@
 .form-row select,
 .form-row textarea {
   flex: 1;
+  max-width: 600px; /* establece un ancho máximo fijo para todos los inputs */
   padding: 0.6rem 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  height: 42px; /* igual altura para todos */
+  height: 42px;
   box-sizing: border-box;
 }
 
@@ -153,6 +154,11 @@
   top: 1rem;
   left: 1rem;
   width: 120px;
+}
+
+.form-row label{
+  border: none;
+  text-align: right;
 }
 
 
