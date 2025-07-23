@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <title>Editar Aplicación</title>
   <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
