@@ -217,7 +217,7 @@
       </div>
 
       <div class="form-row">
-        <label for="perfil">Perfil profesional</label>
+        <label for="perfil">Perfil profesional (máx 800 caracteres)</label>
         <textarea id="perfil" name="perfil" maxlength="800" required></textarea>
       </div>
 
@@ -235,53 +235,128 @@
 
     <!-- Seccion 2: Formación académica -->
     <div class="seccion" id="seccion-2" style="display:none;">
-      <h2>Formación académica (hasta 3)</h2>
+      <h2>Formación académica (hasta 5)</h2>
+      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de bachiller, técnicos o tecnológicos con sus respectivos certificados en formato PDF.</p>
+      <br>
       <!-- Formación 1 (obligatoria) -->
-      <h3>Formación 1</h3>
+      <h3>Formación académica 1</h3>
       <input type="text" name="fa1_titulo" placeholder="Título obtenido" required>
       <input type="text" name="fa1_institucion" placeholder="Institución" required>
+      <p>Fecha de inicio:</p>
       <input type="date" name="fa1_inicio" required>
+      <p>Fecha de finalización:</p>
       <input type="date" name="fa1_fin" required>
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fa1_certificado" accept=".pdf" required>
+      <br>
 
       <!-- Formación 2 -->
-      <h3>Formación 2 (opcional)</h3>
+      <h3>Formación académica 2 (opcional)</h3>
       <input type="text" name="fa2_titulo" placeholder="Título obtenido">
       <input type="text" name="fa2_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
       <input type="date" name="fa2_inicio">
+      <p>Fecha de finalización:</p>
       <input type="date" name="fa2_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fa2_certificado" accept=".pdf">
+      <br>
 
       <!-- Formación 3 -->
-      <h3>Formación 3 (opcional)</h3>
+      <h3>Formación académica 3 (opcional)</h3>
       <input type="text" name="fa3_titulo" placeholder="Título obtenido">
       <input type="text" name="fa3_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
       <input type="date" name="fa3_inicio">
+      <p>Fecha de finalización:</p>
       <input type="date" name="fa3_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fa3_certificado" accept=".pdf">
+      <br>
+
+      <!-- Formación 4 -->
+      <h3>Formación académica 4 (opcional)</h3>
+      <input type="text" name="fa4_titulo" placeholder="Título obtenido">
+      <input type="text" name="fa4_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
+      <input type="date" name="fa4_inicio">
+      <p>Fecha de finalización:</p>
+      <input type="date" name="fa4_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
+      <input type="file" name="fa4_certificado" accept=".pdf">
+      <br>
+
+      <!-- Formación 5 -->
+      <h3>Formación académica 5 (opcional)</h3>
+      <input type="text" name="fa5_titulo" placeholder="Título obtenido">
+      <input type="text" name="fa5_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
+      <input type="date" name="fa5_inicio">
+      <p>Fecha de finalización:</p>
+      <input type="date" name="fa5_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
+      <input type="file" name="fa5_certificado" accept=".pdf">
     </div>
 
     <!-- Seccion 3: Formación profesional -->
     <div class="seccion" id="seccion-3" style="display:none;">
-      <h2>Formación profesional (hasta 3)</h2>
-      <h3>Profesional 1</h3>
+      <h2>Formación profesional (hasta 5)</h2>
+      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de pregrado, diplomados o posgrados con sus respectivos certificados en formato PDF.</p>
+      <br>
+      <h3>Formación Profesional 1 (título de pregrado)</h3>
       <input type="text" name="fp1_titulo" placeholder="Título obtenido" required>
       <input type="text" name="fp1_institucion" placeholder="Institución" required>
+      <p>Fecha de inicio:</p>
       <input type="date" name="fp1_inicio" required>
+      <p>Fecha de finalización:</p>
       <input type="date" name="fp1_fin" required>
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fp1_certificado" accept=".pdf" required>
-      <h3>Profesional 2 (opcional)</h3>
+      <br>
+
+      <h3>Formación Profesional 2 (opcional)</h3>
       <input type="text" name="fp2_titulo" placeholder="Título obtenido">
       <input type="text" name="fp2_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
       <input type="date" name="fp2_inicio">
+      <p>Fecha de finalización:</p>
       <input type="date" name="fp2_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fp2_certificado" accept=".pdf">
-      <h3>Profesional 3 (opcional)</h3>
+      <br>
+
+      <h3>Formación Profesional 3 (opcional)</h3>
       <input type="text" name="fp3_titulo" placeholder="Título obtenido">
       <input type="text" name="fp3_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
       <input type="date" name="fp3_inicio">
+      <p>Fecha de finalización:</p>
       <input type="date" name="fp3_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
       <input type="file" name="fp3_certificado" accept=".pdf">
+      <br>
+
+      <h3>Formación Profesional 4 (opcional)</h3>
+      <input type="text" name="fp4_titulo" placeholder="Título obtenido">
+      <input type="text" name="fp4_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
+      <input type="date" name="fp4_inicio">
+      <p>Fecha de finalización:</p>
+      <input type="date" name="fp4_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
+      <input type="file" name="fp4_certificado" accept=".pdf">
+      <br>
+
+      <h3>Formación Profesional 5 (opcional)</h3>
+      <input type="text" name="fp5_titulo" placeholder="Título obtenido">
+      <input type="text" name="fp5_institucion" placeholder="Institución">
+      <p>Fecha de inicio:</p>
+      <input type="date" name="fp5_inicio">
+      <p>Fecha de finalización:</p>
+      <input type="date" name="fp5_fin">
+      <p>Adjunte diploma y acta de grado en un mismo PDF:</p>
+      <input type="file" name="fp5_certificado" accept=".pdf">
+      <br>
     </div>
 
     <!-- Seccion 4: Experiencia académica -->

@@ -36,7 +36,7 @@ $id_aplicacion = $stmt->insert_id;
 $stmt->close();
 
 // Formación académica y profesional
-for ($i = 1; $i <= 3; $i++) {
+for ($i = 1; $i <= 5; $i++) {
     if (!empty($_POST["fa{$i}_titulo"])) {
         $archivo = subirArchivo($_FILES["fa{$i}_certificado"], 'uploads', "fa{$i}_");
         $stmt = $conexion->prepare("INSERT INTO formacion_academica (id_aplicacion, titulo, institucion, fecha_inicio, fecha_fin, archivo_certificado) VALUES (?, ?, ?, ?, ?, ?)");
