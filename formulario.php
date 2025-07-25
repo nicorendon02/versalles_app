@@ -188,7 +188,34 @@
 
       <div class="form-row">
         <label for="profesion">Profesión</label>
-        <input type="text" id="profesion" name="profesion" required>
+        <!-- Dropdown para profesiones -->
+        <select id="profesion" name="profesion" required>
+          <option value="">Seleccione una profesión</option>
+          <option value="Actuacion">Actuación, Dirección escénica y doblaje en Radio y Televisión</option>
+          <option value="Administrador">Administración de Empresas</option>
+          <option value="Administrador">Administración de empresas agropecuarias, Administración agrícola o Administración agropecuaria</option>
+          <option value="Administrador">Administración Pública</option>
+          <option value="Agronomo">Agronómicas y Forestales (Ingeniería Agronómica, Ingeniería Forestal, Ingeniería Agrícola, Agrología y Agronomía)</option>
+          <option value="Arquitecto">Arquitectura, Ingeniería y Profesiones auxiliares</option>
+          <option value="Bacteriologo">Bacteriología</option>
+          <option value="Contador">Contaduría Pública</option>
+          <option value="Abogado">Derecho</option>
+          <option value="Diseñador">Diseño Industrial</option>
+          <option value="Enfermero">Enfermería</option>
+          <option value="Fisioterapeuta">Fisioterapia</option>
+          <option value="Fonoaudiólogo">Fonoaudiología</option>
+          <option value="Ingeniero">Ingeniería y de sus profesiones afines y de sus profesiones auxiliares (Ingeniería Forestal, Eléctrica, Agronómica y Agrícola)</option>
+          <option value="Ingeniero">Ingeniería de Petróleos</option>
+          <option value="Ingeniero">Ingeniería Pesquera</option>
+          <option value="Medico">Medicina y Cirugía</option>
+          <option value="Odontologo">Odontología</option>
+          <option value="Optometrista">Optometría</option>
+          <option value="Psicologo">Psicología</option>
+          <option value="Fotografo">Actividad Técnica o profesión tecnológica especializada de la fotografía y la camarografía</option>
+          <option value="Terapeuta">Terapia ocupacional</option>
+          <option value="TrabajadorSocial">Trabajo Social</option>
+          <option value="Otro">Otro</option>
+        </select>
       </div>
 
       <div class="form-row">
@@ -225,10 +252,10 @@
         <label for="foto">Foto reciente (PNG/JPG, máx 5MB)</label>
         <input type="file" id="foto" name="foto" accept=".png, .jpg, .jpeg" required>
       </div>
-
-      <div class="form-row">
+      
+      <div class="form-row" id="tarjeta-profesional">
         <label for="tarjeta">Tarjeta profesional (PDF, máx 5MB)</label>
-        <input type="file" id="tarjeta" name="tarjeta" accept=".pdf" required>
+        <input type="file" id="tarjeta" name="tarjeta" accept=".pdf">
       </div>
     </div>
 
@@ -492,5 +519,25 @@
   </form>
 
   <script src="js/formulario.js"></script>
+  <!-- Script ocultar tarjeta profesional -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const profesionSelect = document.getElementById("profesion");
+      const tarjetaContainer = document.getElementById("tarjeta-profesional");
+
+      function toggleTarjetaProfesional() {
+        const profesion = profesionSelect.value;
+        if (profesion === "Otro" || profesion === "") {
+          tarjetaContainer.style.display = "none";
+        } else {
+          tarjetaContainer.style.display = "flex";
+        }
+      }
+
+      profesionSelect.addEventListener("change", toggleTarjetaProfesional);
+      toggleTarjetaProfesional(); // ejecutar al cargar la página
+    });
+  </script>
+
 </body>
 </html>

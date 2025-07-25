@@ -49,7 +49,9 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
     <div class="campo">Dirección: <?php echo $datos['direccion']; ?> | Ciudad: <?php echo $datos['ciudad']; ?></div>
     <div class="campo">Correo: <?php echo $datos['correo']; ?></div>
     <div class="campo">Perfil profesional: <?php echo $datos['perfil']; ?></div>
+    <?php if (!empty($datos['tarjeta_profesional'])): ?>
     <div class="archivo">Tarjeta profesional: <?php echo mostrarArchivo($datos['tarjeta_profesional']); ?></div>
+    <?php endif; ?>
     <div class="archivo">Firma digital: <?php echo mostrarArchivo($datos['firma_digital']); ?></div>
   </div>
 
