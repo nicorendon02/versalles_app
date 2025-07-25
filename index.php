@@ -94,7 +94,9 @@
     <div class="descripcion">
       Bienvenido al Centro de Desarrollo Comunitario Versalles.<br>
       Por favor, diligencie cuidadosamente cada uno de los campos requeridos para su hoja de vida digital.<br>
-      Una vez enviado, el formulario no podrá ser modificado.
+      Una vez enviado, el formulario no podrá ser modificado.<br><br>
+      Lo invitamos a visitar nuestro sitio web para más información sobre nuestros programas y servicios.
+      <a href="https://centroversalles.org" target="_blank"><span class="org">centroversalles.org</span></a>
     </div>
     <div class="legal">
       Al continuar, acepta el tratamiento de datos personales conforme a la ley 1581 del 2012.
