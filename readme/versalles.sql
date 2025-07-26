@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2025 at 06:41 PM
+-- Generation Time: Jul 27, 2025 at 01:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -50,6 +50,21 @@ CREATE TABLE `aplicaciones` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `certificados_antecedentes`
+--
+
+CREATE TABLE `certificados_antecedentes` (
+  `id` int(11) NOT NULL,
+  `id_aplicacion` int(11) NOT NULL,
+  `certificado_judicial` varchar(255) DEFAULT NULL,
+  `certificado_fiscal` varchar(255) DEFAULT NULL,
+  `certificado_disciplinario` varchar(255) DEFAULT NULL,
+  `fecha_subida` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `eventos`
 --
 
@@ -80,6 +95,24 @@ CREATE TABLE `experiencia_academica` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `experiencia_icbf`
+--
+
+CREATE TABLE `experiencia_icbf` (
+  `id` int(11) NOT NULL,
+  `id_aplicacion` int(11) NOT NULL,
+  `nombre_empresa` varchar(255) DEFAULT NULL,
+  `nombre_programa` varchar(255) DEFAULT NULL,
+  `funciones_generales` text DEFAULT NULL,
+  `cargo` varchar(255) DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `certificado_pdf` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `experiencia_laboral`
 --
 
@@ -92,7 +125,8 @@ CREATE TABLE `experiencia_laboral` (
   `telefono` varchar(20) DEFAULT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL
+  `fecha_fin` date DEFAULT NULL,
+  `archivo_certificado` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -125,6 +159,19 @@ CREATE TABLE `formacion_profesional` (
   `fecha_inicio` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
   `archivo_certificado` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `observaciones`
+--
+
+CREATE TABLE `observaciones` (
+  `id` int(11) NOT NULL,
+  `id_aplicacion` int(11) NOT NULL,
+  `comentario` text DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -172,6 +219,13 @@ ALTER TABLE `aplicaciones`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `certificados_antecedentes`
+--
+ALTER TABLE `certificados_antecedentes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_aplicacion` (`id_aplicacion`);
+
+--
 -- Indexes for table `eventos`
 --
 ALTER TABLE `eventos`
@@ -182,6 +236,13 @@ ALTER TABLE `eventos`
 -- Indexes for table `experiencia_academica`
 --
 ALTER TABLE `experiencia_academica`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_aplicacion` (`id_aplicacion`);
+
+--
+-- Indexes for table `experiencia_icbf`
+--
+ALTER TABLE `experiencia_icbf`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_aplicacion` (`id_aplicacion`);
 
@@ -207,6 +268,13 @@ ALTER TABLE `formacion_profesional`
   ADD KEY `id_aplicacion` (`id_aplicacion`);
 
 --
+-- Indexes for table `observaciones`
+--
+ALTER TABLE `observaciones`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_aplicacion` (`id_aplicacion`);
+
+--
 -- Indexes for table `referencias`
 --
 ALTER TABLE `referencias`
@@ -227,53 +295,77 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `aplicaciones`
 --
 ALTER TABLE `aplicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `certificados_antecedentes`
+--
+ALTER TABLE `certificados_antecedentes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `experiencia_academica`
 --
 ALTER TABLE `experiencia_academica`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `experiencia_icbf`
+--
+ALTER TABLE `experiencia_icbf`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `experiencia_laboral`
 --
 ALTER TABLE `experiencia_laboral`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `formacion_academica`
 --
 ALTER TABLE `formacion_academica`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `formacion_profesional`
 --
 ALTER TABLE `formacion_profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `observaciones`
+--
+ALTER TABLE `observaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `referencias`
 --
 ALTER TABLE `referencias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `certificados_antecedentes`
+--
+ALTER TABLE `certificados_antecedentes`
+  ADD CONSTRAINT `certificados_antecedentes_ibfk_1` FOREIGN KEY (`id_aplicacion`) REFERENCES `aplicaciones` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `eventos`
@@ -286,6 +378,12 @@ ALTER TABLE `eventos`
 --
 ALTER TABLE `experiencia_academica`
   ADD CONSTRAINT `experiencia_academica_ibfk_1` FOREIGN KEY (`id_aplicacion`) REFERENCES `aplicaciones` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `experiencia_icbf`
+--
+ALTER TABLE `experiencia_icbf`
+  ADD CONSTRAINT `experiencia_icbf_ibfk_1` FOREIGN KEY (`id_aplicacion`) REFERENCES `aplicaciones` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `experiencia_laboral`
@@ -304,6 +402,12 @@ ALTER TABLE `formacion_academica`
 --
 ALTER TABLE `formacion_profesional`
   ADD CONSTRAINT `formacion_profesional_ibfk_1` FOREIGN KEY (`id_aplicacion`) REFERENCES `aplicaciones` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `observaciones`
+--
+ALTER TABLE `observaciones`
+  ADD CONSTRAINT `observaciones_ibfk_1` FOREIGN KEY (`id_aplicacion`) REFERENCES `aplicaciones` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `referencias`
