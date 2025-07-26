@@ -288,7 +288,9 @@
     <!-- Seccion 2: Formación académica -->
     <div class="seccion" id="seccion-2" style="display:none;">
       <h2>Formación académica (hasta 5)</h2>
-      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de bachiller, técnicos o tecnológicos con sus respectivos certificados en formato PDF.</p>
+      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de bachiller, técnicos o tecnológicos con sus respectivos certificados en formato PDF.
+        <br>No es necesario completar todas las formaciones.
+      </p>
       <br>
       <!-- Formación 1 (obligatoria) -->
       <h3>Formación académica 1</h3>
@@ -353,7 +355,9 @@
     <!-- Seccion 3: Formación profesional -->
     <div class="seccion" id="seccion-3" style="display:none;">
       <h2>Formación profesional (hasta 5)</h2>
-      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de pregrado, diplomados o posgrados con sus respectivos certificados en formato PDF.</p>
+      <p style="text-align: center;">Por favor, adjunte los datos de sus títulos de pregrado, diplomados o posgrados con sus respectivos certificados en PDF.
+        <br>No es necesario completar todas las formaciones.
+      </p>
       <br>
       <h3>Formación Profesional 1 (título de pregrado)</h3>
       <input type="text" name="fp1_titulo" placeholder="Título obtenido" required>
@@ -414,18 +418,24 @@
     <!-- Seccion 4: Experiencia académica -->
     <div class="seccion" id="seccion-4" style="display:none;">
       <h2>Experiencia académica (hasta 3)</h2>
+      <p style="text-align: center;">Por favor, adjunte los datos de sus experiencias de pasantías o prácticas.
+        <br>No es necesario completar todas las experiencias.
+      </p>
+      <br>
       <h3>Experiencia 1</h3>
       <input type="text" name="ea1_nombre" placeholder="Nombre de la experiencia" required>
       <input type="text" name="ea1_institucion" placeholder="Institución" required>
       <input type="date" name="ea1_inicio" required>
       <input type="date" name="ea1_fin" required>
       <input type="file" name="ea1_certificado" accept=".pdf" required>
+      <br>
       <h3>Experiencia 2 (opcional)</h3>
       <input type="text" name="ea2_nombre" placeholder="Nombre de la experiencia">
       <input type="text" name="ea2_institucion" placeholder="Institución">
       <input type="date" name="ea2_inicio">
       <input type="date" name="ea2_fin">
       <input type="file" name="ea2_certificado" accept=".pdf">
+      <br>
       <h3>Experiencia 3 (opcional)</h3>
       <input type="text" name="ea3_nombre" placeholder="Nombre de la experiencia">
       <input type="text" name="ea3_institucion" placeholder="Institución">
@@ -437,14 +447,21 @@
     <!-- Seccion 5: Eventos -->
     <div class="seccion" id="seccion-5" style="display:none;">
       <h2>Asistencia a eventos (hasta 3)</h2>
+      <p style="text-align: center;">Por favor, describa los eventos relevantes a los que ha asistido.
+        <br>No es necesario completar esta sección.
+      </p>
+      <br>
+      <h3>Evento 1</h3>
       <input type="text" name="ev1_nombre" placeholder="Nombre del evento">
       <input type="text" name="ev1_organizacion" placeholder="Organización">
       <input type="date" name="ev1_fecha">
       <br>
+      <h3>Evento 2</h3>
       <input type="text" name="ev2_nombre" placeholder="Nombre del evento">
       <input type="text" name="ev2_organizacion" placeholder="Organización">
       <input type="date" name="ev2_fecha">
       <br>
+      <h3>Evento 3</h3>
       <input type="text" name="ev3_nombre" placeholder="Nombre del evento">
       <input type="text" name="ev3_organizacion" placeholder="Organización">
       <input type="date" name="ev3_fecha">
@@ -453,6 +470,9 @@
     <!-- Seccion 6: Experiencia laboral -->
     <div class="seccion" id="seccion-6" style="display:none;">
       <h2>Experiencia laboral (hasta 5)</h2>
+      <p style="text-align: center;">Por favor, describa sus experiencias laborales más relevantes con sus respectivos certificados en PDF.
+        <br>No es necesario completar todas las experiencias.
+      </p>
       <!-- Repite este bloque 5 veces -->
       <div class="experiencia">
         <input type="text" name="el1_empresa" placeholder="Empresa" required>
