@@ -81,25 +81,15 @@ for ($i = 1; $i <= 5; $i++) {
     }
 }
 
-// Guardar experiencia con ICBF (hasta 3 formularios)
+// Guardar experiencia con ICBF (hasta 3 formularios) siguiendo la logica de los anteriores
 for ($i = 1; $i <= 3; $i++) {
-  $empresa = $_POST["icbf_empresa_$i"] ?? null;
-  $programa = $_POST["icbf_programa_$i"] ?? null;
-  $funciones = $_POST["icbf_funciones_$i"] ?? null;
-  $cargo = $_POST["icbf_cargo_$i"] ?? null;
-  $fecha_inicio = $_POST["icbf_fecha_inicio_$i"] ?? null;
-  $fecha_fin = $_POST["icbf_fecha_fin_$i"] ?? null;
-  $certificado = $_FILES["icbf_certificado_$i"]['name'] ?? '';
-
-  // Si hay algún campo diligenciado o archivo cargado
-  if ($empresa || $programa || $funciones || $cargo || $fecha_inicio || $fecha_fin || $certificado) {
-    if ($certificado) {
-      move_uploaded_file($_FILES["icbf_certificado_$i"]['tmp_name'], 'uploads/' . $certificado);
+    if (!empty($_POST["icbf_empresa_{$i}"])) {
+        $archivo = subirArchivo($_FILES["icbf_certificado_{$i}"], 'uploads', "icbf{$i}_");
+        $stmt = $conexion->prepare("INSERT INTO experiencia_icbf (id_aplicacion, nombre_empresa, nombre_programa, funciones_generales, cargo, fecha_inicio, fecha_fin, certificado_pdf) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('isssssss', $id_aplicacion, $_POST["icbf_empresa_{$i}"], $_POST["icbf_programa_{$i}"], $_POST["icbf_funciones_{$i}"], $_POST["icbf_cargo_{$i}"], $_POST["icbf_inicio_{$i}"], $_POST["icbf_fin_{$i}"], $archivo);
+        $stmt->execute();
+        $stmt->close();
     }
-
-    $conexion->query("INSERT INTO experiencia_icbf (id_aplicacion, empresa, programa, funciones, cargo, fecha_inicio, fecha_fin, certificado)
-      VALUES ('$id_aplicacion', '$empresa', '$programa', '$funciones', '$cargo', '$fecha_inicio', '$fecha_fin', '$certificado')");
-  }
 }
 
 
@@ -113,12 +103,12 @@ for ($i = 1; $i <= 6; $i++) {
     }
 }
 
-// Antecedentes
-$antecedentes_judiciales = subirArchivo($_FILES['antecedentes_judiciales'], 'uploads', 'antecedentes_judiciales_');
-$antecedentes_fiscales = subirArchivo($_FILES['antecedentes_fiscales'], 'uploads', 'antecedentes_fiscales_');
-$antecedentes_disciplinarios = subirArchivo($_FILES['antecedentes_disciplinarios'], 'uploads', 'antecedentes_disciplinarios_');
+// Guardar certificados de antecedentes siguiendo la lógica de los anteriores
+$certificado_judicial = subirArchivo($_FILES['antecedentes_judiciales'], 'uploads', 'judicial_');
+$certificado_fiscal = subirArchivo($_FILES['antecedentes_fiscales'], 'uploads', 'fiscal_');
+$certificado_disciplinario = subirArchivo($_FILES['antecedentes_disciplinarios'], 'uploads', 'disciplinario_');
 $stmt = $conexion->prepare("INSERT INTO certificados_antecedentes (id_aplicacion, certificado_judicial, certificado_fiscal, certificado_disciplinario) VALUES (?, ?, ?, ?)");
-$stmt->bind_param('isss', $id_aplicacion, $antecedentes_judiciales, $antecedentes_fiscales, $antecedentes_disciplinarios);
+$stmt->bind_param('isss', $id_aplicacion, $certificado_judicial, $certificado_fiscal, $certificado_disciplinario);
 $stmt->execute();
 $stmt->close();
 

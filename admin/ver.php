@@ -23,6 +23,7 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
   <meta charset="UTF-8">
   <title>Ver Aplicación</title>
   <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
   <style>
     body { font-family: 'Segoe UI', sans-serif; padding: 2rem; background: #f5f5f5; }
     .contenedor { background: white; padding: 2rem; border-radius: 20px; max-width: 1000px; margin: auto; }
@@ -89,6 +90,31 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
   mostrarSubregistros($conexion, 'experiencia_laboral', $id, ['empresa', 'cargo', 'jefe_inmediato', 'telefono', 'ciudad', 'fecha_inicio', 'fecha_fin'], 'Experiencia Laboral');
   mostrarSubregistros($conexion, 'referencias', $id, ['nombre', 'cargo', 'telefono'], 'Referencias');
   ?>
+
+  <!-- Experiencia con ICBF -->
+  <div class="seccion">
+    <h3>Experiencia con ICBF</h3>
+    <?php
+    $icbf = $conexion->query("SELECT * FROM experiencia_icbf WHERE id_aplicacion = $id");
+    if ($icbf->num_rows > 0) {
+      while ($row = $icbf->fetch_assoc()) {
+        echo "<div class='campo'>";
+        echo "Empresa: " . $row['nombre_empresa'] . "<br>";
+        echo "Programa: " . $row['nombre_programa'] . "<br>";
+        echo "Funciones: " . $row['funciones_generales'] . "<br>";
+        echo "Cargo: " . $row['cargo'] . "<br>";
+        echo "Fecha Inicio: " . $row['fecha_inicio'] . "<br>";
+        echo "Fecha Fin: " . $row['fecha_fin'] . "<br>";
+        if (!empty($row['certificado_pdf'])) {
+          echo "Certificado: " . mostrarArchivo($row['certificado_pdf']) . "<br>";
+        }
+        echo "</div><hr>";
+      }
+    } else {
+      echo "<div class='campo'>No hay experiencia registrada con ICBF.</div>";
+    }
+    ?></div>
+
   <div class="seccion">
     <?php if ($certificados && ($certificados['certificado_judicial'] || $certificados['certificado_fiscal'] || $certificados['certificado_disciplinario'])): ?>
     <h3>Certificados de Antecedentes</h3>

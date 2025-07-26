@@ -427,6 +427,7 @@
       <input type="text" name="ea1_institucion" placeholder="Institución" required>
       <input type="date" name="ea1_inicio" required>
       <input type="date" name="ea1_fin" required>
+      <p>Adjunte evidencia en formato PDF:</p>
       <input type="file" name="ea1_certificado" accept=".pdf" required>
       <br>
       <h3>Experiencia 2 (opcional)</h3>
@@ -434,6 +435,7 @@
       <input type="text" name="ea2_institucion" placeholder="Institución">
       <input type="date" name="ea2_inicio">
       <input type="date" name="ea2_fin">
+      <p>Adjunte evidencia en formato PDF:</p>
       <input type="file" name="ea2_certificado" accept=".pdf">
       <br>
       <h3>Experiencia 3 (opcional)</h3>
@@ -441,6 +443,7 @@
       <input type="text" name="ea3_institucion" placeholder="Institución">
       <input type="date" name="ea3_inicio">
       <input type="date" name="ea3_fin">
+      <p>Adjunte evidencia en formato PDF:</p>
       <input type="file" name="ea3_certificado" accept=".pdf">
     </div>
 
