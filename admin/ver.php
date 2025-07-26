@@ -10,6 +10,7 @@ $id = intval($_GET['id']);
 $datos = $conexion->query("SELECT * FROM aplicaciones WHERE id = $id")->fetch_assoc();
 // Obtener certificados de antecedentes
 $certificados = $conexion->query("SELECT * FROM certificados_antecedentes WHERE id_aplicacion = $id")->fetch_assoc();
+$obs = $conexion->query("SELECT * FROM observaciones WHERE id_aplicacion = $id")->fetch_assoc();
 
 
 function mostrarArchivo($nombre, $label = 'Ver archivo') {
@@ -93,18 +94,23 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
     <h3>Certificados de Antecedentes</h3>
     
       <?php if ($certificados['certificado_judicial']): ?>
-        <div class="archivo">Antecedentes judiciales: <a href="../uploads/<?php echo $certificados['certificado_judicial']; ?>" target="_blank">Certificado Judicial</a></div>
+        <div class="archivo">Antecedentes judiciales: <a href="../uploads/<?php echo $certificados['certificado_judicial']; ?>" target="_blank">Ver certificado</a></div>
       <?php endif; ?>
       <?php if ($certificados['certificado_fiscal']): ?>
-        <div class="archivo">Antecedentes fiscales: <a href="../uploads/<?php echo $certificados['certificado_fiscal']; ?>" target="_blank">Certificado Fiscal</a></div>
-        
+        <div class="archivo">Antecedentes fiscales: <a href="../uploads/<?php echo $certificados['certificado_fiscal']; ?>" target="_blank">Ver certificado</a></div>
+
       <?php endif; ?>
       <?php if ($certificados['certificado_disciplinario']): ?>
-        <div class="archivo">Antecedentes disciplinarios: <a href="../uploads/<?php echo $certificados['certificado_disciplinario']; ?>" target="_blank">Certificado Disciplinario</a></div>
-        
+        <div class="archivo">Antecedentes disciplinarios: <a href="../uploads/<?php echo $certificados['certificado_disciplinario']; ?>" target="_blank">Ver certificado</a></div>
       <?php endif; ?>
     
     <?php endif; ?>
+  </div>
+
+  <!-- Sección 10: Observaciones -->
+  <div class="seccion">
+    <h3>Observaciones</h3>
+    <div class="campo"><?php echo nl2br(htmlspecialchars($obs['comentario'])); ?></div>
   </div>
 
   <a class="boton" href="dashboard.php">&larr; Volver al panel</a>

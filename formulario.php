@@ -665,9 +665,18 @@
       <h3>Antecedentes Disciplinarios</h3>
       <input type="file" name="antecedentes_disciplinarios" accept=".pdf" required>
     </div>
-    
-    <!-- Seccion 10: Firma -->
+
+    <!-- Seccion 10: Observaciones -->
     <div class="seccion" id="seccion-10" style="display:none;">
+      <h2>Observaciones</h2>
+      <p style="text-align: center;">Si tienes algún comentario u observación adicional, por favor escríbelo aquí.</p>
+      <br>
+      <textarea name="observacion" id="observacion" rows="4" class="form-control" placeholder="Escribe aquí tu comentario..."></textarea>
+    </div>
+
+    
+    <!-- Seccion 11: Firma -->
+    <div class="seccion" id="seccion-11" style="display:none;">
       <h2>Firma digital</h2>
       <input type="file" name="firma_digital" accept=".pdf" required>
       <p>Para efectos legales, certifico que los datos proporcionados son verídicos y completos.</p>

@@ -122,5 +122,12 @@ $stmt->bind_param('isss', $id_aplicacion, $antecedentes_judiciales, $antecedente
 $stmt->execute();
 $stmt->close();
 
+// Observaciones
+$observaciones = $_POST['observacion'] ?? '';
+$stmt = $conexion->prepare("INSERT INTO observaciones (id_aplicacion, comentario) VALUES (?, ?)");
+$stmt->bind_param('is', $id_aplicacion, $observaciones);
+$stmt->execute();
+$stmt->close();
+
 $conexion->close();
 echo json_encode(['success' => true]);
