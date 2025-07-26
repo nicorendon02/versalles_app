@@ -73,8 +73,9 @@ for ($i = 1; $i <= 3; $i++) {
 // Experiencia laboral
 for ($i = 1; $i <= 5; $i++) {
     if (!empty($_POST["el{$i}_empresa"])) {
-        $stmt = $conexion->prepare("INSERT INTO experiencia_laboral (id_aplicacion, empresa, cargo, jefe_inmediato, telefono, ciudad, fecha_inicio, fecha_fin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('isssssss', $id_aplicacion, $_POST["el{$i}_empresa"], $_POST["el{$i}_cargo"], $_POST["el{$i}_jefe"], $_POST["el{$i}_telefono"], $_POST["el{$i}_ciudad"], $_POST["el{$i}_inicio"], $_POST["el{$i}_fin"]);
+        $archivo = subirArchivo($_FILES["el{$i}_certificado"], 'uploads', "el{$i}_");
+        $stmt = $conexion->prepare("INSERT INTO experiencia_laboral (id_aplicacion, empresa, cargo, jefe_inmediato, telefono, ciudad, fecha_inicio, fecha_fin, archivo_certificado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('issssssss', $id_aplicacion, $_POST["el{$i}_empresa"], $_POST["el{$i}_cargo"], $_POST["el{$i}_jefe"], $_POST["el{$i}_telefono"], $_POST["el{$i}_ciudad"], $_POST["el{$i}_inicio"], $_POST["el{$i}_fin"], $archivo);
         $stmt->execute();
         $stmt->close();
     }

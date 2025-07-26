@@ -475,53 +475,79 @@
       </p>
       <!-- Repite este bloque 5 veces -->
       <div class="experiencia">
+        <h3>Experiencia laboral 1</h3>
         <input type="text" name="el1_empresa" placeholder="Empresa" required>
         <input type="text" name="el1_cargo" placeholder="Cargo" required>
         <input type="text" name="el1_jefe" placeholder="Jefe inmediato" required>
         <input type="text" name="el1_telefono" placeholder="Teléfono" required>
         <input type="text" name="el1_ciudad" placeholder="Ciudad" required>
+        <p>Fecha de inicio:</p>
         <input type="date" name="el1_inicio" required>
+        <p>Fecha de finalización:</p>
         <input type="date" name="el1_fin" required>
+        <p>Adjunte certificado laboral (PDF):</p>
+        <input type="file" name="el1_certificado" accept=".pdf">
+
       </div>
       <br>
       <div class="experiencia">
+        <h3>Experiencia laboral 2</h3>
         <input type="text" name="el2_empresa" placeholder="Empresa" >
         <input type="text" name="el2_cargo" placeholder="Cargo" >
         <input type="text" name="el2_jefe" placeholder="Jefe inmediato" >
         <input type="text" name="el2_telefono" placeholder="Teléfono" >
         <input type="text" name="el2_ciudad" placeholder="Ciudad" >
+        <p>Fecha de inicio:</p>
         <input type="date" name="el2_inicio" >
+        <p>Fecha de finalización:</p>
         <input type="date" name="el2_fin" >
+        <p>Adjunte certificado laboral (PDF):</p>
+        <input type="file" name="el2_certificado" accept=".pdf">
       </div>
       <br>
       <div class="experiencia">
+        <h3>Experiencia laboral 3</h3>
         <input type="text" name="el3_empresa" placeholder="Empresa" >
         <input type="text" name="el3_cargo" placeholder="Cargo" >
         <input type="text" name="el3_jefe" placeholder="Jefe inmediato" >
         <input type="text" name="el3_telefono" placeholder="Teléfono" >
         <input type="text" name="el3_ciudad" placeholder="Ciudad" >
+        <p>Fecha de inicio:</p>
         <input type="date" name="el3_inicio" >
+        <p>Fecha de finalización:</p>
         <input type="date" name="el3_fin" >
+        <p>Adjunte certificado laboral (PDF):</p>
+        <input type="file" name="el3_certificado" accept=".pdf">
       </div>
       <br>
       <div class="experiencia">
+        <h3>Experiencia laboral 4</h3>
         <input type="text" name="el4_empresa" placeholder="Empresa" >
         <input type="text" name="el4_cargo" placeholder="Cargo" >
         <input type="text" name="el4_jefe" placeholder="Jefe inmediato" >
         <input type="text" name="el4_telefono" placeholder="Teléfono" >
         <input type="text" name="el4_ciudad" placeholder="Ciudad" >
+        <p>Fecha de inicio:</p>
         <input type="date" name="el4_inicio" >
+        <p>Fecha de finalización:</p>
         <input type="date" name="el4_fin" >
+        <p>Adjunte certificado laboral (PDF):</p>
+        <input type="file" name="el4_certificado" accept=".pdf">
       </div>
       <br>
       <div class="experiencia">
+        <h3>Experiencia laboral 5</h3>
         <input type="text" name="el5_empresa" placeholder="Empresa" >
         <input type="text" name="el5_cargo" placeholder="Cargo" >
         <input type="text" name="el5_jefe" placeholder="Jefe inmediato" >
         <input type="text" name="el5_telefono" placeholder="Teléfono" >
         <input type="text" name="el5_ciudad" placeholder="Ciudad" >
+        <p>Fecha de inicio:</p>
         <input type="date" name="el5_inicio" >
+        <p>Fecha de finalización:</p>
         <input type="date" name="el5_fin" >
+        <p>Adjunte certificado laboral (PDF):</p>
+        <input type="file" name="el5_certificado" accept=".pdf">
       </div>
       <!-- Repetir el bloque para el2_*, el3_*, etc. -->
     </div>
