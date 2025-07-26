@@ -653,8 +653,21 @@
       <input type="text" name="ref6_telefono" placeholder="Teléfono">
     </div>
 
-    <!-- Seccion 9: Firma -->
+    <!-- Seccion 9: Antecedentes -->
     <div class="seccion" id="seccion-9" style="display:none;">
+      <h2>Antecedentes</h2>
+      <p style="text-align: center;">Por favor adjuntar los certificados de antecedentes judiciales, fiscales y disciplinarios en formato PDF.</p>
+      <br>
+      <h3>Antecedentes Judiciales</h3>
+      <input type="file" name="antecedentes_judiciales" accept=".pdf" required>
+      <h3>Antecedentes Fiscales</h3>
+      <input type="file" name="antecedentes_fiscales" accept=".pdf" required>
+      <h3>Antecedentes Disciplinarios</h3>
+      <input type="file" name="antecedentes_disciplinarios" accept=".pdf" required>
+    </div>
+    
+    <!-- Seccion 10: Firma -->
+    <div class="seccion" id="seccion-10" style="display:none;">
       <h2>Firma digital</h2>
       <input type="file" name="firma_digital" accept=".pdf" required>
       <p>Para efectos legales, certifico que los datos proporcionados son verídicos y completos.</p>

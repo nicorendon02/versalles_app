@@ -8,6 +8,9 @@ if (!isset($_SESSION['usuario'])) {
 $conexion = new mysqli('localhost', 'root', '', 'versalles');
 $id = intval($_GET['id']);
 $datos = $conexion->query("SELECT * FROM aplicaciones WHERE id = $id")->fetch_assoc();
+// Obtener certificados de antecedentes
+$certificados = $conexion->query("SELECT * FROM certificados_antecedentes WHERE id_aplicacion = $id")->fetch_assoc();
+
 
 function mostrarArchivo($nombre, $label = 'Ver archivo') {
   return $nombre ? "<a href='../uploads/$nombre' target='_blank'>$label</a>" : "No disponible";
@@ -85,6 +88,27 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
   mostrarSubregistros($conexion, 'experiencia_laboral', $id, ['empresa', 'cargo', 'jefe_inmediato', 'telefono', 'ciudad', 'fecha_inicio', 'fecha_fin'], 'Experiencia Laboral');
   mostrarSubregistros($conexion, 'referencias', $id, ['nombre', 'cargo', 'telefono'], 'Referencias');
   ?>
+  <?php if ($certificados && ($certificados['certificado_judicial'] || $certificados['certificado_fiscal'] || $certificados['certificado_disciplinario'])): ?>
+  <h3>Certificados de Antecedentes</h3>
+  <ul>
+    <?php if ($certificados['certificado_judicial']): ?>
+      <li>
+        <a href="../uploads/<?php echo $certificados['certificado_judicial']; ?>" target="_blank">Certificado Judicial</a>
+      </li>
+    <?php endif; ?>
+    <?php if ($certificados['certificado_fiscal']): ?>
+      <li>
+        <a href="../uploads/<?php echo $certificados['certificado_fiscal']; ?>" target="_blank">Certificado Fiscal</a>
+      </li>
+    <?php endif; ?>
+    <?php if ($certificados['certificado_disciplinario']): ?>
+      <li>
+        <a href="../uploads/<?php echo $certificados['certificado_disciplinario']; ?>" target="_blank">Certificado Disciplinario</a>
+      </li>
+    <?php endif; ?>
+  </ul>
+<?php endif; ?>
+
 
   <a class="boton" href="dashboard.php">&larr; Volver al panel</a>
 </div>

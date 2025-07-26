@@ -113,5 +113,14 @@ for ($i = 1; $i <= 6; $i++) {
     }
 }
 
+// Antecedentes
+$antecedentes_judiciales = subirArchivo($_FILES['antecedentes_judiciales'], 'uploads', 'antecedentes_judiciales_');
+$antecedentes_fiscales = subirArchivo($_FILES['antecedentes_fiscales'], 'uploads', 'antecedentes_fiscales_');
+$antecedentes_disciplinarios = subirArchivo($_FILES['antecedentes_disciplinarios'], 'uploads', 'antecedentes_disciplinarios_');
+$stmt = $conexion->prepare("INSERT INTO certificados_antecedentes (id_aplicacion, certificado_judicial, certificado_fiscal, certificado_disciplinario) VALUES (?, ?, ?, ?)");
+$stmt->bind_param('isss', $id_aplicacion, $antecedentes_judiciales, $antecedentes_fiscales, $antecedentes_disciplinarios);
+$stmt->execute();
+$stmt->close();
+
 $conexion->close();
 echo json_encode(['success' => true]);
