@@ -555,7 +555,7 @@
     <!-- Seccion 7: ICBF -->
     <div class="seccion" id="seccion-7" style="display:none;">
       <h2>Trabajo con programas de ICBF</h2>
-      <p style="text-align: center;">Si ha trabajado con programas del ICBF, por favor complete los campos requeridos, de lo contrario deje los campos vacíos.
+      <p style="text-align: center;">Si ha trabajado con programas del ICBF, por favor de clic en la casilla y complete los campos requeridos.
         <br>No es necesario completar todas las experiencias.
       </p>
       <br>
@@ -620,7 +620,12 @@
 
     <!-- Seccion 8: Referencias -->
     <div class="seccion" id="seccion-8" style="display:none;">
-      <h2>Referencias (hasta 3)</h2>
+      <h2>Referencias (hasta 6)</h2>
+      <p style="text-align: center;">Por favor complete los campos con sus referencias personales, familiares y laborales.
+        <br>No es necesario completar todas las referencias.
+      </p>
+      <br>
+      <h3>Experiencias personales</h3>
       <input type="text" name="ref1_nombre" placeholder="Nombre" required>
       <input type="text" name="ref1_cargo" placeholder="Cargo" required>
       <input type="text" name="ref1_telefono" placeholder="Teléfono" required>
@@ -629,9 +634,23 @@
       <input type="text" name="ref2_cargo" placeholder="Cargo">
       <input type="text" name="ref2_telefono" placeholder="Teléfono">
       <br>
+      <h3>Referencias familiares</h3>
       <input type="text" name="ref3_nombre" placeholder="Nombre">
       <input type="text" name="ref3_cargo" placeholder="Cargo">
       <input type="text" name="ref3_telefono" placeholder="Teléfono">
+      <br>
+      <input type="text" name="ref4_nombre" placeholder="Nombre">
+      <input type="text" name="ref4_cargo" placeholder="Cargo">
+      <input type="text" name="ref4_telefono" placeholder="Teléfono">
+      <br>
+      <h3>Referencias laborales</h3>
+      <input type="text" name="ref5_nombre" placeholder="Nombre">
+      <input type="text" name="ref5_cargo" placeholder="Cargo">
+      <input type="text" name="ref5_telefono" placeholder="Teléfono">
+      <br>
+      <input type="text" name="ref6_nombre" placeholder="Nombre">
+      <input type="text" name="ref6_cargo" placeholder="Cargo">
+      <input type="text" name="ref6_telefono" placeholder="Teléfono">
     </div>
 
     <!-- Seccion 9: Firma -->

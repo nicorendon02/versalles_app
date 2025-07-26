@@ -104,7 +104,7 @@ for ($i = 1; $i <= 3; $i++) {
 
 
 // Referencias
-for ($i = 1; $i <= 3; $i++) {
+for ($i = 1; $i <= 6; $i++) {
     if (!empty($_POST["ref{$i}_nombre"])) {
         $stmt = $conexion->prepare("INSERT INTO referencias (id_aplicacion, nombre, cargo, telefono) VALUES (?, ?, ?, ?)");
         $stmt->bind_param('isss', $id_aplicacion, $_POST["ref{$i}_nombre"], $_POST["ref{$i}_cargo"], $_POST["ref{$i}_telefono"]);
