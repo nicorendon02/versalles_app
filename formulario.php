@@ -161,6 +161,31 @@
   text-align: right;
 }
 
+.checkbox-icbf {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin-bottom: 1rem;
+}
+
+.checkbox-icbf label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.checkbox-icbf input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
 
   </style>
 </head>
@@ -484,7 +509,67 @@
     <!-- Seccion 7: ICBF -->
     <div class="seccion" id="seccion-7" style="display:none;">
       <h2>Trabajo con programas de ICBF</h2>
-      <label><input type="checkbox" name="trabaja_icbf"> ¿Ha trabajado con programas del ICBF?</label>
+      <p style="text-align: center;">Si ha trabajado con programas del ICBF, por favor complete los campos requeridos, de lo contrario deje los campos vacíos.
+        <br>No es necesario completar todas las experiencias.
+      </p>
+      <br>
+      <div class="form-row checkbox-icbf">
+        <label for="trabaja_icbf">
+          <input type="checkbox" id="trabaja_icbf" name="trabaja_icbf" value="1" onchange="toggleIcbeFields()">
+          ¿Ha trabajado con programas del ICBF?
+        </label>
+      </div>
+
+      <div id="icbfFields" style="display:none;">
+        <!-- Formulario 1 -->
+        <div class="icbf-entry">
+          <h3>Experiencia con ICBF 1</h3>
+          <input type="text" name="icbf_empresa_1" placeholder="Nombre de la empresa" >
+          <input type="text" name="icbf_programa_1" placeholder="Nombre del programa" >
+          <input type="text" name="icbf_funciones_1" placeholder="Funciones generales" >
+          <input type="text" name="icbf_cargo_1" placeholder="Cargo" >
+          <p>Fecha de inicio</p>
+          <input type="date" name="icbf_inicio_1" >
+          <p>Fecha de finalización</p>
+          <input type="date" name="icbf_fin_1" >
+          <p>Certificado (PDF)</p>
+          <input type="file" name="icbf_certificado_1" accept=".pdf">
+        </div>
+        <br>
+        <!-- Formulario 2 -->
+        <div class="icbf-entry">
+          <h3>Experiencia con ICBF 2</h3>
+          <!-- mismos campos que arriba -->
+          <input type="text" name="icbf_empresa_2" placeholder="Nombre de la empresa">
+          <input type="text" name="icbf_programa_2" placeholder="Nombre del programa">
+          <input type="text" name="icbf_funciones_2" placeholder="Funciones generales">
+          <input type="text" name="icbf_cargo_2" placeholder="Cargo">
+          <p>Fecha de inicio</p>
+          <input type="date" name="icbf_inicio_2">
+          <p>Fecha de finalización</p>
+          <input type="date" name="icbf_fin_2">
+          <p>Certificado (PDF)</p>
+          <input type="file" name="icbf_certificado_2" accept=".pdf">
+        </div>
+        <br>
+        <!-- Formulario 3 -->
+        <div class="icbf-entry">
+          <h3>Experiencia con ICBF 3</h3>
+          <!-- mismos campos que arriba -->
+          <input type="text" name="icbf_empresa_3" placeholder="Nombre de la empresa">
+          <input type="text" name="icbf_programa_3" placeholder="Nombre del programa">
+          <input type="text" name="icbf_funciones_3" placeholder="Funciones generales">
+          <input type="text" name="icbf_cargo_3" placeholder="Cargo">
+          <p>Fecha de inicio</p>
+          <input type="date" name="icbf_inicio_3">
+          <p>Fecha de finalización</p>
+          <input type="date" name="icbf_fin_3">
+          <p>Certificado (PDF)</p>
+          <input type="file" name="icbf_certificado_3" accept=".pdf">
+        </div>
+      </div>
+
+
     </div>
 
     <!-- Seccion 8: Referencias -->
@@ -538,6 +623,14 @@
       toggleTarjetaProfesional(); // ejecutar al cargar la página
     });
   </script>
+  <script>
+    function toggleIcbeFields() {
+      const checkbox = document.getElementById("trabaja_icbf");
+      const icbfFields = document.getElementById("icbfFields");
+      icbfFields.style.display = checkbox.checked ? "block" : "none";
+    }
+  </script>
+
 
 </body>
 </html>

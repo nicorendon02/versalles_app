@@ -80,6 +80,28 @@ for ($i = 1; $i <= 5; $i++) {
     }
 }
 
+// Guardar experiencia con ICBF (hasta 3 formularios)
+for ($i = 1; $i <= 3; $i++) {
+  $empresa = $_POST["icbf_empresa_$i"] ?? null;
+  $programa = $_POST["icbf_programa_$i"] ?? null;
+  $funciones = $_POST["icbf_funciones_$i"] ?? null;
+  $cargo = $_POST["icbf_cargo_$i"] ?? null;
+  $fecha_inicio = $_POST["icbf_fecha_inicio_$i"] ?? null;
+  $fecha_fin = $_POST["icbf_fecha_fin_$i"] ?? null;
+  $certificado = $_FILES["icbf_certificado_$i"]['name'] ?? '';
+
+  // Si hay algún campo diligenciado o archivo cargado
+  if ($empresa || $programa || $funciones || $cargo || $fecha_inicio || $fecha_fin || $certificado) {
+    if ($certificado) {
+      move_uploaded_file($_FILES["icbf_certificado_$i"]['tmp_name'], 'uploads/' . $certificado);
+    }
+
+    $conexion->query("INSERT INTO experiencia_icbf (id_aplicacion, empresa, programa, funciones, cargo, fecha_inicio, fecha_fin, certificado)
+      VALUES ('$id_aplicacion', '$empresa', '$programa', '$funciones', '$cargo', '$fecha_inicio', '$fecha_fin', '$certificado')");
+  }
+}
+
+
 // Referencias
 for ($i = 1; $i <= 3; $i++) {
     if (!empty($_POST["ref{$i}_nombre"])) {
