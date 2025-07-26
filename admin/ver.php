@@ -88,27 +88,24 @@ function mostrarArchivo($nombre, $label = 'Ver archivo') {
   mostrarSubregistros($conexion, 'experiencia_laboral', $id, ['empresa', 'cargo', 'jefe_inmediato', 'telefono', 'ciudad', 'fecha_inicio', 'fecha_fin'], 'Experiencia Laboral');
   mostrarSubregistros($conexion, 'referencias', $id, ['nombre', 'cargo', 'telefono'], 'Referencias');
   ?>
-  <?php if ($certificados && ($certificados['certificado_judicial'] || $certificados['certificado_fiscal'] || $certificados['certificado_disciplinario'])): ?>
-  <h3>Certificados de Antecedentes</h3>
-  <ul>
-    <?php if ($certificados['certificado_judicial']): ?>
-      <li>
-        <a href="../uploads/<?php echo $certificados['certificado_judicial']; ?>" target="_blank">Certificado Judicial</a>
-      </li>
+  <div class="seccion">
+    <?php if ($certificados && ($certificados['certificado_judicial'] || $certificados['certificado_fiscal'] || $certificados['certificado_disciplinario'])): ?>
+    <h3>Certificados de Antecedentes</h3>
+    
+      <?php if ($certificados['certificado_judicial']): ?>
+        <div class="archivo">Antecedentes judiciales: <a href="../uploads/<?php echo $certificados['certificado_judicial']; ?>" target="_blank">Certificado Judicial</a></div>
+      <?php endif; ?>
+      <?php if ($certificados['certificado_fiscal']): ?>
+        <div class="archivo">Antecedentes fiscales: <a href="../uploads/<?php echo $certificados['certificado_fiscal']; ?>" target="_blank">Certificado Fiscal</a></div>
+        
+      <?php endif; ?>
+      <?php if ($certificados['certificado_disciplinario']): ?>
+        <div class="archivo">Antecedentes disciplinarios: <a href="../uploads/<?php echo $certificados['certificado_disciplinario']; ?>" target="_blank">Certificado Disciplinario</a></div>
+        
+      <?php endif; ?>
+    
     <?php endif; ?>
-    <?php if ($certificados['certificado_fiscal']): ?>
-      <li>
-        <a href="../uploads/<?php echo $certificados['certificado_fiscal']; ?>" target="_blank">Certificado Fiscal</a>
-      </li>
-    <?php endif; ?>
-    <?php if ($certificados['certificado_disciplinario']): ?>
-      <li>
-        <a href="../uploads/<?php echo $certificados['certificado_disciplinario']; ?>" target="_blank">Certificado Disciplinario</a>
-      </li>
-    <?php endif; ?>
-  </ul>
-<?php endif; ?>
-
+  </div>
 
   <a class="boton" href="dashboard.php">&larr; Volver al panel</a>
 </div>
