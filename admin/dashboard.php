@@ -208,15 +208,14 @@ $offset = ($pagina_actual - 1) * $registros_por_pagina;
       <tbody>
         <?php
         // Consulta para contar total de registros filtrados
-        $query_count = "SELECT COUNT(DISTINCT a.id) as total_filtrado 
+        $query_count = "SELECT COUNT(*) as total_filtrado 
                        FROM aplicaciones a
-                       LEFT JOIN formacion_profesional f ON a.id = f.id_aplicacion
                        WHERE 1=1";
 
         // Consulta principal con LIMIT
-        $query = "SELECT a.id, a.nombres, a.apellidos, a.correo, a.ciudad, a.foto, a.profesion, a.trabaja_icbf, f.fecha_fin
+        $query = "SELECT a.id, a.nombres, a.apellidos, a.correo, a.ciudad, a.foto, a.profesion, a.trabaja_icbf,
+                         (SELECT MAX(f.fecha_fin) FROM formacion_profesional f WHERE f.id_aplicacion = a.id) as fecha_fin
                   FROM aplicaciones a
-                  LEFT JOIN formacion_profesional f ON a.id = f.id_aplicacion
                   WHERE 1=1";
 
         // Aplicar filtros a ambas consultas
@@ -236,9 +235,9 @@ $offset = ($pagina_actual - 1) * $registros_por_pagina;
         if (!empty($_GET['formacion_antiguedad'])) {
           $años = intval($_GET['formacion_antiguedad']);
           if ($años == 5) {
-            $filtros .= " AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) > 5";
+            $filtros .= " AND EXISTS (SELECT 1 FROM formacion_profesional f WHERE f.id_aplicacion = a.id AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) > 5)";
           } else {
-            $filtros .= " AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) <= $años";
+            $filtros .= " AND EXISTS (SELECT 1 FROM formacion_profesional f WHERE f.id_aplicacion = a.id AND TIMESTAMPDIFF(YEAR, f.fecha_fin, CURDATE()) <= $años)";
           }
         }
 

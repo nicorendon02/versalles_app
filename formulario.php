@@ -92,6 +92,16 @@
       background-color: #1e2f70;
     }
 
+    button:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    button:disabled:hover {
+      background-color: #ccc;
+    }
+
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -662,10 +672,15 @@
       <p style="text-align: center;">Por favor adjuntar los certificados de antecedentes judiciales, fiscales y disciplinarios en formato PDF.</p>
       <br>
       <h3>Antecedentes Judiciales</h3>
+      <p style='text-align: center;'>Puede descargar el certificado haciendo clic en <a href="https://antecedentes.policia.gov.co:7005/WebJudicial/" target="_blank"> este enlace</a></p>
       <input type="file" name="antecedentes_judiciales" accept=".pdf" required>
+      <br>
       <h3>Antecedentes Fiscales</h3>
+      <p style='text-align: center;'>Puede descargar el certificado haciendo clic en <a href="https://www.contraloria.gov.co/control-fiscal/responsabilidad-fiscal/certificado-de-antecedentes-fiscales" target="_blank"> este enlace</a></p>
       <input type="file" name="antecedentes_fiscales" accept=".pdf" required>
+      <br>
       <h3>Antecedentes Disciplinarios</h3>
+      <p style='text-align: center;'>Puede descargar el certificado haciendo clic en <a href="https://apps.procuraduria.gov.co/webcert/inicio.aspx?tpo=2" target="_blank"> este enlace</a></p>
       <input type="file" name="antecedentes_disciplinarios" accept=".pdf" required>
     </div>
 
