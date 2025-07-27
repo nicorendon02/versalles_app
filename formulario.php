@@ -628,7 +628,7 @@
         <br>No es necesario completar todas las referencias.
       </p>
       <br>
-      <h3>Experiencias personales</h3>
+      <h3>Referencias personales</h3>
       <input type="text" name="ref1_nombre" placeholder="Nombre" required>
       <input type="text" name="ref1_cargo" placeholder="Cargo" required>
       <input type="text" name="ref1_telefono" placeholder="Teléfono" required>
