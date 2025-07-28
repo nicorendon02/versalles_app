@@ -10,7 +10,7 @@ $total = $conexion->query("SELECT COUNT(*) AS total FROM aplicaciones")->fetch_a
 $rol = $_SESSION['rol'];
 
 // Configuración de paginación
-$registros_por_pagina = 10;
+$registros_por_pagina = 6;
 $pagina_actual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
 $offset = ($pagina_actual - 1) * $registros_por_pagina;
 ?>
